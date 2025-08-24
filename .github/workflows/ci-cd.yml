@@ -35,13 +35,13 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 6️⃣ Construir la imagen Docker
+      # 6️⃣ Construir la imagen Docker con nombre completo del repo
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/hola-mundo:latest .
+        run: docker build -t cangreburger/hola-mundo:latest .
 
-      # 7️⃣ Subir la imagen a Docker Hub
+      # 7️⃣ Subir la imagen a Docker Hub con nombre completo del repo
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/hola-mundo:latest
+        run: docker push cangreburger/hola-mundo:latest
 
       # 8️⃣ Deploy a Render
       - name: Deploy to Render
@@ -50,4 +50,3 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
           -H "Accept: application/json" \
           https://api.render.com/deploy/srv-d2l545buibrs73est8f0
-
